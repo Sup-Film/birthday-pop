@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Happy Birthday | น่ารัก ๆ</title>
+    <meta name="description" content="การ์ดอวยพรวันเกิดแบบน่ารัก มีลูกเล่นนิดหน่อย ใช้แก้ไขได้เอง" />
+
+    <!-- สีหลักแก้ไขได้ใน styles.css ผ่าน :root variables -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- พื้นหลังตกแต่ง -->
+    <div class="bg-blob blob-1" aria-hidden="true"></div>
+    <div class="bg-blob blob-2" aria-hidden="true"></div>
+    <div class="bg-blob blob-3" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <!-- ตั้งชื่อคนสำคัญได้ที่นี่ -->
+      <h1 class="title">สุขสันต์วันเกิด, <span id="dear-name">แฟนของฉัน</span> 🎂</h1>
+      <p class="subtitle">ขอให้วันนี้เต็มไปด้วยรอยยิ้มและความทรงจำดี ๆ</p>
+      <div class="header-actions">
+        <button id="celebrateBtn" class="btn primary">เริ่มฉลอง ✨</button>
+        <button id="balloonBtn" class="btn ghost">ปล่อยลูกโป่ง 🎈</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- ดอกไม้ไฟ Canvas Overlay -->
+      <canvas id="fxCanvas" aria-hidden="true"></canvas>
+
+      <!-- แกลเลอรี่รูป: เปลี่ยนรูปได้ตามต้องการ วางไฟล์ใน assets/images/ -->
+      <section class="card gallery" aria-label="แกลเลอรี่รูป">
+        <h2>ภาพความทรงจำของเรา</h2>
+        <div class="grid">
+          <figure>
+            <img src="assets/images/pop_1.jpg" alt="รูปที่ 1" />
+            <figcaption>รูปที่ 1</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/pop_2.jpg" alt="รูปที่ 2" />
+            <figcaption>รูปที่ 2</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/pop_3.jpg" alt="รูปที่ 3" />
+            <figcaption>รูปที่ 3</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/pop_4.jpg" alt="รูปที่ 4" />
+            <figcaption>รูปที่ 4</figcaption>
+          </figure>
+        </div>
+        <p class="hint">เคล็ดลับ: ลากวางรูปใหม่ลงในหน้านี้ได้โดยตรงเพื่อแทนที่อย่างไว</p>
+      </section>
+
+      <!-- เค้กวันเกิด + เป่าเทียน -->
+      <section class="card cake" aria-label="เค้กวันเกิด">
+        <h2>เค้กวันเกิด 🍰</h2>
+        <div class="cake-stage">
+          <div class="cake-body">
+            <div class="icing"></div>
+          </div>
+          <div class="candles" role="group" aria-label="เทียนบนเค้ก">
+            <div class="candle"><span class="flame"></span><span class="smoke"></span></div>
+            <div class="candle"><span class="flame"></span><span class="smoke"></span></div>
+            <div class="candle"><span class="flame"></span><span class="smoke"></span></div>
+            <div class="candle"><span class="flame"></span><span class="smoke"></span></div>
+            <div class="candle"><span class="flame"></span><span class="smoke"></span></div>
+          </div>
+        </div>
+        <div class="cake-actions">
+          <button id="blowBtn" class="btn primary">เป่าเทียน 💨</button>
+          <button id="micToggle" class="btn ghost" aria-pressed="false">ใช้ไมค์เป่า</button>
+          <button id="relightBtn" class="btn ghost">จุดเทียนใหม่ 🔥</button>
+        </div>
+      </section>
+
+      <!-- การ์ดอวยพรแบบเปิดอ่าน + พิมพ์ทีละตัวอักษร -->
+      <section class="card wish" aria-label="การ์ดอวยพร">
+        <div class="wish-inner">
+          <div class="wish-front">
+            <p>คลิกเพื่อเปิดการ์ด</p>
+            <button id="openCard" class="btn primary">เปิดการ์ด 💌</button>
+          </div>
+          <div class="wish-back" aria-hidden="true">
+            <!-- แก้ไขข้อความอวยพรได้ที่ data-text ข้างล่างนี้ -->
+            <p id="typed" class="pop-in" data-text="สุขสันต์วันเกิดนะคะ/ครับ ขอให้มีความสุขมาก ๆ สุขภาพแข็งแรง สมหวังในทุกสิ่งที่ตั้งใจ ขอบคุณที่อยู่ข้างกันเสมอ รักนะ 💖"></p>
+            <div class="wish-actions">
+              <button id="replayType" class="btn ghost">พิมพ์ซ้ำ ⟳</button>
+              <button id="confettiAgain" class="btn ghost">โปรยกระดาษสี ✨</button>
+              <button id="fireworksBtn" class="btn ghost">ดอกไม้ไฟ 🎆</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ส่วนโน้ตสั้น ๆ หรือ Timeline น่ารัก ๆ -->
+      <section class="card notes" aria-label="โน้ตน่ารัก ๆ">
+        <h2>โน้ตน้อย ๆ จากใจ</h2>
+        <ul class="notes-list">
+          <!-- ปรับข้อความด้านล่างนี้ได้ตามใจ -->
+          <li>ชอบรอยยิ้มของเธอที่สุดเลย</li>
+          <li>ขอบคุณที่ทำให้ทุกวันเป็นวันพิเศษ</li>
+          <li>จะอยู่ข้างเธอเสมอ ไม่ว่าเมื่อไหร่</li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- คลิกที่หน้าจอเพื่อให้หัวใจลอยขึ้นได้ด้วยนะ -->
+    <div id="floating-layer" aria-hidden="true"></div>
+
+    <footer class="site-footer">
+      <!-- ใส่ชื่อผู้ให้ได้ที่นี่ -->
+      <p>จากใจ: <span contenteditable="true">ฉัน</span> • <span contenteditable="true">วันที่พิเศษของเรา</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
